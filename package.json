@@ -1,0 +1,54 @@
+{
+  "name": "safetynet-server",
+  "version": "0.0.1",
+  "description": "Google SafetyNet Attestation verification package.",
+  "author": "Bitwala GmbH <opensource@bitwala.com>",
+  "license": "ISC",
+  "homepage": "https://github.com/bitwala/safetynet-server",
+  "bugs": "https://github.com/bitwala/safetynet-server/issues",
+  "main": "lib/index.js",
+  "scripts": {
+    "prepare": "npm run build",
+    "build": "npm run lint && npm run clean &&  tsc",
+    "test": "jest --no-cache",
+    "test:coverage": "jest --no-cache --coverage",
+    "clean": "shx rm -rf lib",
+    "lint": "tslint --project tsconfig.json  'src/**/*.ts'",
+    "version": "auto-changelog -p"
+  },
+  "keywords": [
+    "react-native",
+    "safetynet",
+    "android device verification",
+    "safetynet attestation"
+  ],
+  "dependencies": {
+    "jws": "^3.2.2",
+    "node-fetch": "^2.5.0"
+  },
+  "devDependencies": {
+    "@types/jest": "^24.0.12",
+    "@types/jws": "^3.2.0",
+    "@types/node-fetch": "^2.3.3",
+    "auto-changelog": "^1.13.0",
+    "jest": "^24.8.0",
+    "shx": "^0.3.2",
+    "ts-jest": "^24.0.2",
+    "tslint": "^5.16.0",
+    "tslint-config-prettier": "^1.18.0",
+    "tslint-config-standard": "^8.0.1",
+    "typescript": "^3.4.5",
+    "typescript-tslint-plugin": "^0.3.1"
+  },
+  "jest": {
+    "preset": "ts-jest",
+    "globals": {
+      "ts-jest": {
+        "diagnostics": false,
+        "tsConfig": "tsconfig.json"
+      }
+    },
+    "bail": 1,
+    "testEnvironment": "node"
+  }
+}
