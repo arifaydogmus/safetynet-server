@@ -2,10 +2,10 @@
   "name": "safetynet-server",
   "version": "0.0.1",
   "description": "Google SafetyNet Attestation verification package.",
-  "author": "Bitwala GmbH <opensource@bitwala.com>",
+  "author": "Arif Aydogmus <aydogmus@gmail.com>",
   "license": "ISC",
-  "homepage": "https://github.com/bitwala/safetynet-server",
-  "bugs": "https://github.com/bitwala/safetynet-server/issues",
+  "homepage": "https://github.com/arifaydogmus/safetynet-server",
+  "bugs": "https://github.com/arifaydogmus/safetynet-server/issues",
   "main": "lib/index.js",
   "scripts": {
     "prepare": "npm run build",
