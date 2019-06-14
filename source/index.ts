@@ -28,6 +28,7 @@ export interface CreateNonceResult {
 export interface VerifySignatureResult {
   isValidSignature: boolean;
   status?: number;
+  error: string | null;
 }
 
 type GenerateHash = (value: string) => string;
@@ -75,14 +76,17 @@ export const verifySignatureWithAPI: VerifySignature = async (
   signedAttestation,
   apiKey
 ) => {
-  const result: VerifySignatureResult = { isValidSignature: PASS_ON_FAILURE };
+  const result: VerifySignatureResult = {
+    isValidSignature: PASS_ON_FAILURE,
+    error: null,
+  };
   if (!apiKey) {
     return result;
   }
   const API_URL = `https://www.googleapis.com/androidcheck/v1/attestations/verify?key=${apiKey}`;
 
   try {
-    const verificationResult = await fetch(API_URL, {
+    const verificationResult: VerifySignatureResult = await fetch(API_URL, {
       method: 'POST',
       compress: false,
       body: JSON.stringify({ signedAttestation }),
@@ -92,11 +96,14 @@ export const verifySignatureWithAPI: VerifySignature = async (
       }
 
       result.status = response.status;
+      result.error = await response.statusText;
       return result;
     });
 
+    verificationResult.error = null;
     return verificationResult;
   } catch (err) {
+    result.error = err;
     return result;
   }
 };
