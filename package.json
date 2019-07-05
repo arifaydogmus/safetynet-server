@@ -1,6 +1,6 @@
 {
   "name": "safetynet-server",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Google SafetyNet Attestation verification package.",
   "author": "Arif Aydogmus <aydogmus@gmail.com>",
   "license": "ISC",
